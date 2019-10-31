@@ -1,0 +1,16 @@
+﻿Step 1:
+Download Following Package from Nuget
+Microsoft.AspNetCore.ResponseCompression
+
+Step 2:
+Next, open the Startup.cs file and modify the ConfigureServices() method as shown below
+services.Configure<GzipCompressionProviderOptions>
+   (options => options.Level = CompressionLevel.Optimal);
+    services.AddResponseCompression(options =>
+    {
+        options.Providers.Add<GzipCompressionProvider>();
+    });
+
+Step 3:
+Then go to the Configure() method and add the response compression middleware to the request pipeline.
+app.UseResponseCompression();
