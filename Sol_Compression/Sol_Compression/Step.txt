@@ -5,7 +5,7 @@ Microsoft.AspNetCore.ResponseCompression
 Step 2:
 Next, open the Startup.cs file and modify the ConfigureServices() method as shown below
 services.Configure<GzipCompressionProviderOptions>
-   (options => options.Level = CompressionLevel.Optimal);
+   (options => options.Level = CompressionLevel.Fastest);
     services.AddResponseCompression(options =>
     {
         options.Providers.Add<GzipCompressionProvider>();

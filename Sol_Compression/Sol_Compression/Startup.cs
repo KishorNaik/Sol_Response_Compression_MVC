@@ -32,12 +32,16 @@ namespace Sol_Compression
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.Configure<GzipCompressionProviderOptions>
-               (options => options.Level = CompressionLevel.Optimal);
             services.AddResponseCompression(options =>
             {
                 options.Providers.Add<GzipCompressionProvider>();
             });
+
+            services.Configure<GzipCompressionProviderOptions>
+              (options =>
+              {
+                  options.Level = CompressionLevel.Fastest;
+              });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
